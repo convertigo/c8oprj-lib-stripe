@@ -3,6 +3,8 @@
   comment: Convertigo Mobile builder Project
   corsOrigin: =Origin
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
+  ↓CreatePaymentIntent [sequences.GenericSequence]: 🗏 sequences/CreatePaymentIntent.yaml
+  ↓getPublicApiKey [sequences.GenericSequence]: 🗏 sequences/getPublicApiKey.yaml
   ↓NgxBuilderTemplate [references.ProjectSchemaReference]: 
     comment: ngx builder template
     projectName: mobilebuilder_tpl_8_0_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_0_0_ngx.zip
