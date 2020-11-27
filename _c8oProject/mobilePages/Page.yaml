@@ -22,7 +22,7 @@ title: First page
   comment: Page header
   tagName: ion-header
   ↓ToolBar [ngx.components.UIDynamicElement-1491634231108]: 
-    beanData: '{"ionBean":"ToolBar"}'
+    beanData: '{"ionBean":"ToolBar","IonColor":"plain:primary"}'
     tagName: ion-toolbar
     ↓ButtonSet1 [ngx.components.UIDynamicElement-1588171103814]: 
       beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:start"}'
@@ -34,10 +34,11 @@ title: First page
       beanData: '{"ionBean":"BarTitle"}'
       tagName: ion-title
       ↓Text [ngx.components.UIText-1491634275121]: 
+        i18n: false
         textValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: plain:Page
+            - MobileSmartSourceType: plain:This is my page
     ↓ButtonSet2 [ngx.components.UIDynamicElement-1588170811054]: 
       beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:end"}'
       tagName: ion-buttons
@@ -56,7 +57,7 @@ title: First page
   comment: Page footer
   tagName: ion-footer
   ↓ToolBar [ngx.components.UIDynamicElement-1491634317538]: 
-    beanData: '{"ionBean":"ToolBar"}'
+    beanData: '{"ionBean":"ToolBar","IonColor":"plain:primary"}'
     tagName: ion-toolbar
     ↓ButtonSet [ngx.components.UIDynamicElement-1588170246138]: 
       beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:start"}'
