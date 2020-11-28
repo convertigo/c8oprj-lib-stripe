@@ -19,6 +19,9 @@
           paymentResponse = intent.getClientSecret();
     }
     '
+↓jElement [steps.ElementStep-1606557287061]: 
+  expression: paymentResponse
+  nodeName: paymentResponse
 ↓amount [variables.RequestableVariable-1606492065963]: 
 ↓currency [variables.RequestableVariable-1606494888949]: 
 ↓privateApiKey [variables.RequestableVariable-1606492157936]: 

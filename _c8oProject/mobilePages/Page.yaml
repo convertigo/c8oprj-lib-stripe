@@ -97,7 +97,7 @@ title: First page
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
               - MobileSmartSourceType: plain:Action 2
 ↓PageEvent [ngx.components.UIPageEvent-1606499720378]: 
-  ↓CallSequence [ngx.components.UIDynamicAction-1606501183024]: 
+  ↓CallSequenceGetPublicApiKey [ngx.components.UIDynamicAction-1606501183024]: 
     beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Stripe.getPublicApiKey"}'
     ↓InstallStripeClient [ngx.components.UICustomAction-1606499731944]: 
       actionValue: 
@@ -111,7 +111,7 @@ title: First page
               				}
               				else {
               						page.c8o.log.debug('[IntallStripe] OK ');
-              						var stripe = Stripe(vars.publicApiKey);
+              						var stripe = window["Stripe"](vars.publicApiKey);
               						resolve();
               				}
               			})
@@ -143,3 +143,17 @@ title: First page
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
             - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Stripe","input":"","model":{"data":[{"priority":1606501183024}],"path":"?.out","prefix":"","suffix":".publicApiKey","custom":"","useCustom":false}}
+      ↓CallSequence [ngx.components.UIDynamicAction-1606557106075]: 
+        beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Stripe.CreatePaymentIntent"}'
+        ↓amount [ngx.components.UIControlVariable-1606557117293]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:500
+        ↓currency [ngx.components.UIControlVariable-1606557117295]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:USD
