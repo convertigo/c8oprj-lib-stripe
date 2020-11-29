@@ -52,21 +52,8 @@ title: First page
   beanData: '{"ionBean":"Content"}'
   comment: Page content
   tagName: ion-content
-  ↓StripeFragment [ngx.components.UICustom-1606500600960]: 
-    htmlTemplate: |
-      <form id="payment-form">
-          <div id="card-element"><!--Stripe.js injects the Card Element--></div>
-          <button id="submit">
-            <div class="spinner hidden" id="spinner"></div>
-            <span id="button-text">Pay</span>
-          </button>
-          <p id="card-error" role="alert"></p>
-          <p class="result-message hidden">
-            Payment succeeded, see the result in your
-            <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-          </p>
-      </form>
-      
+  ↓UseSharedComponent [ngx.components.UIUseShared-1606560012480]: 
+    sharedcomponent: lib_Stripe.MobileApplication.Application.StripeCreditCardPayment
 ↓Footer [ngx.components.UIDynamicElement-1491634242460]: 
   beanData: '{"ionBean":"Footer"}'
   comment: Page footer
@@ -96,64 +83,3 @@ title: First page
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
               - MobileSmartSourceType: plain:Action 2
-↓PageEvent [ngx.components.UIPageEvent-1606499720378]: 
-  ↓CallSequenceGetPublicApiKey [ngx.components.UIDynamicAction-1606501183024]: 
-    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Stripe.getPublicApiKey"}'
-    ↓InstallStripeClient [ngx.components.UICustomAction-1606499731944]: 
-      actionValue: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
-          - com.twinsoft.convertigo.beans.common.FormatedContent: 
-            →: |
-              			load('https://js.stripe.com/v3/', function (err, script) {
-              				if (err) {
-              						page.c8o.log.error('[IntallStripe] '+ err);
-              				}
-              				else {
-              						page.c8o.log.debug('[IntallStripe] OK ');
-              						var stripe = window["Stripe"](vars.publicApiKey);
-              						resolve();
-              				}
-              			})
-              
-      package_dependencies: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-              - com.twinsoft.convertigo.beans.common.XMLVector: 
-                - java.lang.String: 
-                  - ↑value: load-script
-                - java.lang.String: 
-                  - ↑value: 1.0.0
-      page_ts_imports: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-              - com.twinsoft.convertigo.beans.common.XMLVector: 
-                - java.lang.String: 
-                  - ↑value: '* as load'
-                - java.lang.String: 
-                  - ↑value: load-script
-      ↓publicApiKey [ngx.components.UIControlVariable-1606501136328]: 
-        varValue: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Stripe","input":"","model":{"data":[{"priority":1606501183024}],"path":"?.out","prefix":"","suffix":".publicApiKey","custom":"","useCustom":false}}
-      ↓CallSequence [ngx.components.UIDynamicAction-1606557106075]: 
-        beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Stripe.CreatePaymentIntent"}'
-        ↓amount [ngx.components.UIControlVariable-1606557117293]: 
-          comment: new variable
-          varValue: 
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: plain:500
-        ↓currency [ngx.components.UIControlVariable-1606557117295]: 
-          comment: new variable
-          varValue: 
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: plain:USD
