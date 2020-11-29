@@ -16,16 +16,20 @@
     	      .build();
           // Create a PaymentIntent with the order amount and currency
           intent = PaymentIntent.create(createParams);
-          paymentResponse = intent.getClientSecret();
+          clientSecret = intent.getClientSecret();
     }
     '
 ↓jElement [steps.ElementStep-1606557287061]: 
-  expression: paymentResponse
-  nodeName: paymentResponse
+  expression: clientSecret
+  nodeName: clientSecret
 ↓amount [variables.RequestableVariable-1606492065963]: 
 ↓currency [variables.RequestableVariable-1606494888949]: 
 ↓privateApiKey [variables.RequestableVariable-1606492157936]: 
-  value: ${lib_Stripe.privateApiKey}
+  value: 
+    - ↑ciphered: true
+    - ↑traceable: false
+    - →→: xf2fe0101f8911cf5c7e419ae4fb221588aaa0c6def01de9d3e15395f5e3bf9c0cef5ecd4299c5390a96ddafedd8b0c31
+  visibility: '-1'
 ↓TestOK [core.TestCase]: 
   ↓amount [variables.TestCaseVariable-1606492084228]: 
     value: 1000

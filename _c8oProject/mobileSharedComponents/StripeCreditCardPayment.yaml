@@ -1,94 +1,22 @@
 ↓PageEvent [ngx.components.UIPageEvent-1606499720378]: 
-  ↓CallSequenceGetPublicApiKey [ngx.components.UIDynamicAction-1606501183024]: 
-    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Stripe.getPublicApiKey"}'
-    ↓CallSequenceCreatePaymentResponse [ngx.components.UIDynamicAction-1606557106075]: 
-      beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Stripe.CreatePaymentIntent"}'
-      ↓amount [ngx.components.UIControlVariable-1606557117293]: 
-        comment: new variable
-        varValue: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: plain:500
-      ↓currency [ngx.components.UIControlVariable-1606557117295]: 
-        comment: new variable
-        varValue: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: plain:USD
-    ↓InstallStripeClient [ngx.components.UICustomAction-1606499731944]: 
-      actionValue: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
-          - com.twinsoft.convertigo.beans.common.FormatedContent: 
-            →: |
-              '			load(''https://js.stripe.com/v3/'', function (err, script) {
-              				if (err) {
-              						page.c8o.log.error(''[IntallStripe] ''+ err);
-              				}
-              				else {
-              						page.c8o.log.debug(''[IntallStripe] OK '');
-              						var stripe = window["Stripe"](vars.publicApiKey);
-              						var elements = stripe.elements();
-              					    var style = {
-              					      base: {
-              					        color: "#32325d",
-              					        fontFamily: ''Arial, sans-serif'',
-              					        fontSmoothing: "antialiased",
-              					        fontSize: "16px",
-              					        "::placeholder": {
-              					          color: "#32325d"
-              					        }
-              					      },
-              					      invalid: {
-              					        fontFamily: ''Arial, sans-serif'',
-              					        color: "#fa755a",
-              					        iconColor: "#fa755a"
-              					      }
-              					    };
-              				
-              				 		var card = elements.create("card", { style: style });
-              				    	// Stripe injects an iframe into the DOM
-              				    	card.mount("#card-element");
-              				
-              						card.on("change", function (event) {
-              						      // Disable the Pay button if there are no card details in the Element
-              						      document.querySelector("button").disabled = event.empty;
-              						      document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
-              						});
-              				
-              						resolve();
-              				}
-              			})
-              '
-      package_dependencies: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-              - com.twinsoft.convertigo.beans.common.XMLVector: 
-                - java.lang.String: 
-                  - ↑value: load-script
-                - java.lang.String: 
-                  - ↑value: 1.0.0
-      page_ts_imports: 
-        - xmlizable: 
-          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-          - com.twinsoft.convertigo.beans.common.XMLVector: 
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
-              - com.twinsoft.convertigo.beans.common.XMLVector: 
-                - java.lang.String: 
-                  - ↑value: '* as load'
-                - java.lang.String: 
-                  - ↑value: load-script
-      ↓publicApiKey [ngx.components.UIControlVariable-1606501136328]: 
-        varValue: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Stripe","input":"","model":{"data":[{"priority":1606501183024}],"path":"?.out","prefix":"","suffix":".publicApiKey","custom":"","useCustom":false}}
+  ↓triggerInit [ngx.components.UICustomAction-1606642554466]: 
+    actionValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+        - com.twinsoft.convertigo.beans.common.FormatedContent: 
+          →: |
+            '            setTimeout(()=> {
+                            page["stripeCard"].nativeElement.dispatchEvent(new MouseEvent(''blur'', {
+                                view: window,
+                                bubbles: true,
+                                cancelable: true
+                            }));
+                        }, 0)
+                        resolve();
+            '
 ↓Div [ngx.components.UIDynamicElement-1606561053347]: 
   beanData: '{"ionBean":"DivTag"}'
+  identifier: stripeCard
   tagName: div
   ↓StripeFragment [ngx.components.UICustom-1606500600960]: 
     htmlTemplate: |
@@ -269,3 +197,157 @@
             	  	}
             	}
             '
+  ↓Event [ngx.components.UIControlEvent-1606642370201]: 
+    attrName: (blur)
+    eventName: (blur)
+    ↓CallSequenceGetApiKeys [ngx.components.UIDynamicAction-1606501183024]: 
+      beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Stripe.getApiKeys"}'
+      ↓CallSequenceCreatePaymentIntent [ngx.components.UIDynamicAction-1606557106075]: 
+        beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Stripe.CreatePaymentIntent"}'
+        ↓amount [ngx.components.UIControlVariable-1606557117293]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: source:{"filter":"Shared","project":"lib_Stripe","input":"","model":{"data":[{"priority":1606559954121}],"path":"?.AmountInCents","prefix":"","suffix":"","custom":"","useCustom":false}}
+        ↓currency [ngx.components.UIControlVariable-1606557117295]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: source:{"filter":"Shared","project":"lib_Stripe","input":"","model":{"data":[{"priority":1606559954121}],"path":"?.Currency","prefix":"","suffix":"","custom":"","useCustom":false}}
+        ↓InstallStripeClient [ngx.components.UICustomAction-1606499731944]: 
+          actionValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+              - com.twinsoft.convertigo.beans.common.FormatedContent: 
+                →: |
+                  '		    var loading = function(isLoading: boolean) {
+                  			  if (isLoading) {
+                  				    // Disable the button and show a spinner
+                  				    document.querySelector("button").disabled = true;
+                  				    document.querySelector("#spinner").classList.remove("hidden");
+                  				    document.querySelector("#button-text").classList.add("hidden");
+                  				  } else {
+                  				    document.querySelector("button").disabled = false;
+                  				    document.querySelector("#spinner").classList.add("hidden");
+                  				    document.querySelector("#button-text").classList.remove("hidden");
+                  				  }
+                  			};
+                  			
+                  			// Show the customer the error from Stripe if their card fails to charge
+                  			var showError = function(errorMsgText: string) {
+                  			  loading(false);
+                  			  var errorMsg = document.querySelector("#card-error");
+                  			  errorMsg.textContent = errorMsgText;
+                  			  setTimeout(function() {
+                  			    errorMsg.textContent = "";
+                  			  }, 4000);
+                  			};
+                  			
+                  			// Shows a success message when the payment is complete
+                  			var orderComplete = function(paymentIntentId: string) {
+                  			  loading(false);
+                  			  document
+                  			    .querySelector(".result-message a")
+                  			    .setAttribute(
+                  			      "href",
+                  			      "https://dashboard.stripe.com/test/payments/" + paymentIntentId
+                  			    );
+                  			  document.querySelector(".result-message").classList.remove("hidden");
+                  			  document.querySelector("button").disabled = true;
+                  			};			
+                  			
+                  			// Load the stripe.js and when load finished, start installation process..
+                  			load(''https://js.stripe.com/v3/'', function (err, script) {
+                  				if (err) {
+                  						page.c8o.log.error(''[IntallStripe] ''+ err);
+                  				}
+                  				else {
+                  						page.c8o.log.debug(''[IntallStripe] OK '');
+                  						var stripe = window["Stripe"](vars.publicApiKey);
+                  						var elements = stripe.elements();
+                  					    var style = {
+                  					      base: {
+                  					        color: "#32325d",
+                  					        fontFamily: ''Arial, sans-serif'',
+                  					        fontSmoothing: "antialiased",
+                  					        fontSize: "16px",
+                  					        "::placeholder": {
+                  					          color: "#32325d"
+                  					        }
+                  					      },
+                  					      invalid: {
+                  					        fontFamily: ''Arial, sans-serif'',
+                  					        color: "#fa755a",
+                  					        iconColor: "#fa755a"
+                  					      }
+                  					    };
+                  				
+                  				 		var card = elements.create("card", { style: style });
+                  				    	// Stripe injects an iframe into the DOM
+                  				    	card.mount("#card-element");
+                  				
+                  						card.on("change", function (event) {
+                  						      // Disable the Pay button if there are no card details in the Element
+                  						      document.querySelector("button").disabled = event.empty;
+                  						      document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
+                  						});
+                  				
+                  						var form = document.getElementById("payment-form");
+                  					    form.addEventListener("submit", function(event) {
+                  							loading(true);
+                  							event.preventDefault();
+                  							// Complete payment when the submit button is clicked
+                  							stripe.confirmCardPayment(vars.clientSecret, {
+                  							     payment_method: {
+                  							       card: card
+                  							     }
+                  						    }).then(function(result) {
+                  							    if (result.error) {
+                  							        // Show error to your customer
+                  							        showError(result.error.message);
+                  							    } else {
+                  							        // The payment succeeded!
+                  							        orderComplete(result.paymentIntent.id);
+                  							    }
+                  						    });
+                  					    });
+                  						resolve();
+                  				}
+                  			})
+                  '
+          package_dependencies: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: load-script
+                    - java.lang.String: 
+                      - ↑value: 1.0.0
+          page_ts_imports: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: '* as load'
+                    - java.lang.String: 
+                      - ↑value: load-script
+          ↓publicApiKey [ngx.components.UIControlVariable-1606501136328]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Stripe","input":"","model":{"data":[{"sequence":"lib_Stripe.getApiKeys","marker":""}],"path":"?.publicApiKey","prefix":"","suffix":"","custom":"","useCustom":false}}
+          ↓clientSecret [ngx.components.UIControlVariable-1606639194131]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Stripe","input":"","model":{"data":[{"sequence":"lib_Stripe.CreatePaymentIntent","marker":""}],"path":"?.clientSecret","prefix":"","suffix":"","custom":"","useCustom":false}}
+↓AmountInCents [ngx.components.UICompVariable-1606640511679]: 
+↓Currency [ngx.components.UICompVariable-1606640542623]: 

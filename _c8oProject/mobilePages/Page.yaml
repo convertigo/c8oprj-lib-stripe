@@ -54,6 +54,16 @@ title: First page
   tagName: ion-content
   ↓UseSharedComponent [ngx.components.UIUseShared-1606560012480]: 
     sharedcomponent: lib_Stripe.MobileApplication.Application.StripeCreditCardPayment
+    ↓AmountInCents [ngx.components.UIControlVariable-1606640610255]: 
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:50000
+    ↓Currency [ngx.components.UIControlVariable-1606640610257]: 
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:'USD'
 ↓Footer [ngx.components.UIDynamicElement-1491634242460]: 
   beanData: '{"ionBean":"Footer"}'
   comment: Page footer
