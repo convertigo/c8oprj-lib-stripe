@@ -156,6 +156,6 @@ title: First page
     beanData: |
       '{
        "ionBean": "ToastAction",
-       "message": "plain:Payment is ok",
+       "message": "script:JSON.stringify(out)",
        "position": "plain:middle"
       }'
