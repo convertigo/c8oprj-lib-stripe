@@ -346,14 +346,12 @@
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
                 - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Stripe","input":"","model":{"data":[{"sequence":"lib_Stripe.CreatePaymentIntent","marker":""}],"path":"?.clientSecret","prefix":"","suffix":"","custom":"","useCustom":false}}
-          ↓IfPaymentIntent [ngx.components.UIDynamicAction-1606650777495]: 
-            beanData: '{"ionBean":"IfAction","condition":"script:out.paymentIntent"}'
-            ↓PublishEvent [ngx.components.UIDynamicAction-1606650743551]: 
-              beanData: |
-                '{
-                 "ionBean": "PublishEventAction",
-                 "topic": "plain:stripeEvent",
-                 "data": "script:out"
-                }'
+          ↓PublishEvent [ngx.components.UIDynamicAction-1606650743551]: 
+            beanData: |
+              '{
+               "ionBean": "PublishEventAction",
+               "topic": "plain:stripeEvent",
+               "data": "script:out"
+              }'
 ↓AmountInCents [ngx.components.UICompVariable-1606640511679]: 
 ↓Currency [ngx.components.UICompVariable-1606640542623]: 

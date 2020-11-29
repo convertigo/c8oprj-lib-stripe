@@ -75,6 +75,9 @@ title: First page
            "Value": "plain:10000"
           }'
         tagName: ion-input
+        ↓FormatLayout [ngx.components.UIDynamicAttr-1606651768680]: 
+          beanData: '{"ionBean":"FormatLayout","TextAlignment":"plain:ion-text-end"}'
+          selfClose: false
     ↓FormItem1 [ngx.components.UIDynamicElement-1606643159249]: 
       beanData: '{"ionBean":"FormItem"}'
       tagName: ion-item
@@ -95,6 +98,9 @@ title: First page
            "Value": "plain:USD"
           }'
         tagName: ion-input
+        ↓FormatLayout [ngx.components.UIDynamicAttr-1606651822242]: 
+          beanData: '{"ionBean":"FormatLayout","TextAlignment":"plain:ion-text-end"}'
+          selfClose: false
   ↓Button [ngx.components.UIDynamicElement-1606645226150]: 
     beanData: '{"ionBean":"Button"}'
     tagName: ion-button
