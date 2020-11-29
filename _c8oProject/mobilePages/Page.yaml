@@ -144,3 +144,12 @@ title: First page
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
               - MobileSmartSourceType: plain:Action 2
+↓Subscribe_Handler [ngx.components.UIEventSubscriber-1606651365112]: 
+  topic: stripeEvent
+  ↓Toast [ngx.components.UIDynamicAction-1606650850743]: 
+    beanData: |
+      '{
+       "ionBean": "ToastAction",
+       "message": "plain:Payment is ok",
+       "position": "plain:middle"
+      }'

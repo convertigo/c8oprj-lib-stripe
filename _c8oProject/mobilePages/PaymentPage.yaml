@@ -1,5 +1,21 @@
 segment: path-to-paymentpage
 title: Title for PaymentPage
+↓Header [ngx.components.UIDynamicElement-1606650222563]: 
+  beanData: '{"ionBean":"Header"}'
+  comment: Page header
+  tagName: ion-header
+  ↓ToolBar [ngx.components.UIDynamicElement-1606650222566]: 
+    beanData: '{"ionBean":"ToolBar","IonColor":"plain:primary"}'
+    tagName: ion-toolbar
+    ↓BarTitle [ngx.components.UIDynamicElement-1606650222575]: 
+      beanData: '{"ionBean":"BarTitle"}'
+      tagName: ion-title
+      ↓Text [ngx.components.UIText-1606650222578]: 
+        i18n: false
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Pay Now
 ↓Content [ngx.components.UIDynamicElement-1606645594399]: 
   beanData: '{"ionBean":"Content"}'
   tagName: ion-content
@@ -10,7 +26,7 @@ title: Title for PaymentPage
       beanData: '{"ionBean":"GridRow"}'
       tagName: ion-row
       ↓GridCol [ngx.components.UIDynamicElement-1606645630602]: 
-        beanData: '{"ionBean":"GridCol"}'
+        beanData: '{"ionBean":"GridCol","FlexAlignement":"plain:ion-align-self-center"}'
         tagName: ion-col
         ↓UseSharedComponent [ngx.components.UIUseShared-1606560012480]: 
           sharedcomponent: lib_Stripe.MobileApplication.Application.StripeCreditCardPayment

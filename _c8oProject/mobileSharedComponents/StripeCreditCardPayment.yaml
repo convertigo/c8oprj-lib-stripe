@@ -20,34 +20,36 @@
   tagName: div
   ↓StripeFragment [ngx.components.UICustom-1606500600960]: 
     htmlTemplate: |
-      '<form id="payment-form" style = "width: 100%;
-      	  min-width:  300px;
-      	  align-self: center;
-      	  box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-      	    		  0px 2px 5px 0px rgba(50, 50, 93, 0.1),
-      	    		  0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
-      	  border-radius: 7px;
-      	  padding: 20px">
-      	  
-          <div id="card-element"><!--Stripe.js injects the Card Element--></div>
-          <button id="submit">
-            <div class="spinner hidden" id="spinner"></div>
-            <span id="button-text">Pay</span>
-          </button>
-          <p id="card-error" role="alert"></p>
-          <p class="result-message hidden">
-            Payment succeeded, see the result in your
-            <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-          </p>
+      <form id="payment-form">
+      	<div id="card-element">
+      		<!--Stripe.js injects the Card Element-->
+      	</div>
+      	<button id="submit">
+      		<div  class="spinner hidden" id="spinner"></div>
+      		<span id="button-text">Pay</span>
+      	</button>
+      	<p id="card-error" role="alert"></p>
+      	<p class="result-message hidden">Payment succeeded.</p>
       </form>
-      '
+      
   ↓StyleCardInput [ngx.components.UIStyle-1606561071419]: 
     styleContent: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
         - com.twinsoft.convertigo.beans.common.FormatedContent: 
           →: |
-            '	button {
+            '	
+            	form {
+            	  width: 100%;
+            	  min-width: 400px;
+            	  align-self: center;
+            	  box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+            	    0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+            	  border-radius: 7px;
+            	  padding: 40px;
+            	};	
+            	
+            	button {
             	  background: #5469d4;
             	  color: #ffffff;
             	  font-family: Arial, sans-serif;
@@ -248,12 +250,6 @@
                   			// Shows a success message when the payment is complete
                   			var orderComplete = function(paymentIntentId: string) {
                   			  loading(false);
-                  			  document
-                  			    .querySelector(".result-message a")
-                  			    .setAttribute(
-                  			      "href",
-                  			      "https://dashboard.stripe.com/test/payments/" + paymentIntentId
-                  			    );
                   			  document.querySelector(".result-message").classList.remove("hidden");
                   			  document.querySelector("button").disabled = true;
                   			};			
@@ -303,17 +299,18 @@
                   							     payment_method: {
                   							       card: card
                   							     }
-                  						    }).then(function(result) {
+                  						    }).then(function(result: any) {
                   							    if (result.error) {
                   							        // Show error to your customer
                   							        showError(result.error.message);
+                  									resolve(result)
                   							    } else {
                   							        // The payment succeeded!
                   							        orderComplete(result.paymentIntent.id);
+                  									resolve(result)
                   							    }
                   						    });
                   					    });
-                  						resolve();
                   				}
                   			})
                   '
@@ -349,5 +346,14 @@
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
                 - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Stripe","input":"","model":{"data":[{"sequence":"lib_Stripe.CreatePaymentIntent","marker":""}],"path":"?.clientSecret","prefix":"","suffix":"","custom":"","useCustom":false}}
+          ↓IfPaymentIntent [ngx.components.UIDynamicAction-1606650777495]: 
+            beanData: '{"ionBean":"IfAction","condition":"script:out.paymentIntent"}'
+            ↓PublishEvent [ngx.components.UIDynamicAction-1606650743551]: 
+              beanData: |
+                '{
+                 "ionBean": "PublishEventAction",
+                 "topic": "plain:stripeEvent",
+                 "data": "script:out"
+                }'
 ↓AmountInCents [ngx.components.UICompVariable-1606640511679]: 
 ↓Currency [ngx.components.UICompVariable-1606640542623]: 
