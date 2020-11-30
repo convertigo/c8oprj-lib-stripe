@@ -1,7 +1,7 @@
 # lib_Stripe
 This is the __Stripe Payment Platform__ Connector for Convertigo. This enables Convertigo Mobile or Desktop apps to interact with the Stripe platform for building __eCommerce__ or __mCommerce__ applications to accept payments.
 
-![Capture](docImage/Capture.png)
+![Capture](./docImage/Capture.png)
 
 # Installation
 
