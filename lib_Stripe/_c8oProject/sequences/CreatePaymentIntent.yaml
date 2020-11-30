@@ -1,0 +1,37 @@
+↓Input_variables [steps.InputVariablesStep-1606745647179]: 
+↓CreatePaymentIntent [steps.SimpleStep-1606745647182]: 
+  expression: |
+    'var StripeAPI = JavaImporter(
+    	com.stripe.Stripe,
+    	com.stripe.model.PaymentIntent,
+    	com.stripe.param.PaymentIntentCreateParams
+    );
+    
+    
+    with (StripeAPI) {
+    	  Stripe.apiKey = privateApiKey;
+          createParams = new PaymentIntentCreateParams.Builder()
+    	      .setCurrency(currency)
+    	      .setAmount(new java.lang.Long(amount * 1))
+    	      .build();
+          // Create a PaymentIntent with the order amount and currency
+          intent = PaymentIntent.create(createParams);
+          clientSecret = intent.getClientSecret();
+    }
+    '
+↓jElement [steps.ElementStep-1606745647185]: 
+  expression: clientSecret
+  nodeName: clientSecret
+↓amount [variables.RequestableVariable-1606745647188]: 
+↓currency [variables.RequestableVariable-1606745647191]: 
+↓privateApiKey [variables.RequestableVariable-1606745647194]: 
+  value: 
+    - ↑ciphered: true
+    - ↑traceable: false
+    - →→: xf2fe0101f8911cf5c7e419ae4fb221588aaa0c6def01de9d3e15395f5e3bf9c0cef5ecd4299c5390a96ddafedd8b0c31
+  visibility: '-1'
+↓TestOK [core.TestCase]: 
+  ↓amount [variables.TestCaseVariable-1606745647198]: 
+    value: 1000
+  ↓currency [variables.TestCaseVariable-1606745647201]: 
+    value: USD

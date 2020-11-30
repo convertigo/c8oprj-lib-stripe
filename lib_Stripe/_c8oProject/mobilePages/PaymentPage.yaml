@@ -1,0 +1,54 @@
+comment: Payment validation
+segment: path-to-paymentpage
+title: Title for PaymentPage
+↓Header [mobile.components.UIDynamicElement-1606748688614]: 
+  beanData: '{"ionBean":"Header"}'
+  tagName: ion-header
+  ↓NavBar [mobile.components.UIDynamicElement-1606748688617]: 
+    beanData: '{"ionBean":"NavBar","IonColor":"plain:primary"}'
+    tagName: ion-navbar
+    ↓BarTitle [mobile.components.UIDynamicElement-1606748688620]: 
+      beanData: '{"ionBean":"BarTitle"}'
+      tagName: ion-title
+      ↓Text1 [mobile.components.UIText-1606748723564]: 
+        i18n: false
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Pay Now
+    ↓ButtonSet [mobile.components.UIDynamicElement-1606758983630]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:right"}'
+      tagName: ion-buttons
+      ↓Button [mobile.components.UIDynamicElement-1606758983633]: 
+        beanData: '{"ionBean":"Button","IconOnly":"plain:icon-only"}'
+        tagName: button
+        ↓Icon [mobile.components.UIDynamicElement-1606758983636]: 
+          beanData: '{"ionBean":"Icon","IconName":"plain:close"}'
+          tagName: ion-icon
+        ↓Event [mobile.components.UIControlEvent-1606759020523]: 
+          ↓CloseModal [mobile.components.UIDynamicAction-1606759032076]: 
+            beanData: '{"ionBean":"CloseModalAction"}'
+↓Content [mobile.components.UIDynamicElement-1606748850989]: 
+  beanData: '{"ionBean":"Content"}'
+  tagName: ion-content
+  ↓Grid [mobile.components.UIDynamicElement-1606748857375]: 
+    beanData: '{"ionBean":"Grid","Height":"plain:height:100%"}'
+    tagName: ion-grid
+    ↓GridRow [mobile.components.UIDynamicElement-1606748861465]: 
+      beanData: '{"ionBean":"GridRow","Height":"plain:height:100%"}'
+      tagName: ion-row
+      ↓GridCol [mobile.components.UIDynamicElement-1606748864495]: 
+        beanData: '{"ionBean":"GridCol","AlignItemsCenter":"plain:align-self-center"}'
+        tagName: ion-col
+        ↓UseSharedComponent [mobile.components.UIUseShared-1606748952141]: 
+          sharedcomponent: lib_Stripe.MobileApplication.Application.StripeCreditCardPayment
+          ↓AmountInCents [mobile.components.UIControlVariable-1606752863840]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:this.navParams.data['Amount']
+          ↓Currency [mobile.components.UIControlVariable-1606752863842]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.mobile.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:this.navParams.data['Currency']
