@@ -228,4 +228,4 @@ if (!tasks.findByName('wrapper')) {
 		description 'Generates Gradle wrapper files.'
 	}
 }
-wrapper.gradleVersion = '6.6.1'
+wrapper.gradleVersion = '6.7.1'
