@@ -17,9 +17,7 @@ This is the __Stripe Payment Platform__ Connector for Convertigo. This enables C
 
 ## Configuring your Stripe Environment
 
-Stripe needs you to configure some account information to get your API keys. You can find them in the Stripe dashboard :
-
-    https://dashboard.stripe.com/test/dashboard
+Stripe needs you to configure some account information to get your API keys. You can find them in the [Stripe dashboard](https://dashboard.stripe.com/test/dashboard).
 
 ## Configuring Convertigo Symbols
 
